@@ -57,4 +57,20 @@ public class Persona {
         this.edad = edad;
     }
     
+    public static Persona factory(String cadena){
+        if(cadena==null){
+            throw new IllegalArgumentException("No son validos los argumentos");
+        }
+        String[] partes = cadena.split(",");
+        if(partes.length!=4){
+           throw new IllegalArgumentException("No son validos los argumentos");
+        }
+
+        try{
+            int edad = Integer.parseInt(partes[3]);
+            return new Persona(partes[0], partes[1], partes[2], edad);
+        }catch(Exception e){
+            throw new IllegalArgumentException("No son validos los argumentos");
+        }        
+    }
 }
